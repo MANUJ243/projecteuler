@@ -2,12 +2,14 @@
 
 var index = 0;
 
-for (let i = 1; i < i+1; i++) {
+for (let i = 2; i < i+1; i++) {
     var prime = true;
 
     for (let j = 1; j <= i; j++) {
-        if (i % j !== 0 && j !== 1 && i !== j) {
-            prime = false;
+        if (j !== 1 && i !== j) {
+            if (i % j === 0) {
+                prime = false;
+            }
         }
     }
 

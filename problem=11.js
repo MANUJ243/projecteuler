@@ -26,21 +26,22 @@ for (let i = 0; i < matrix.length; i++) {
     var product = 1;
 
     for (let j = 0; j < matrix[i].length; j++) {
-        if (i < matrix.length - 4 && j < matrix[i].length - 4) {
-            var horizontalProd = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
-            var diagonalProd = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+        if (i < matrix.length - 4) {
             var verticalProd = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
-
-            if (horizontalProd > product) { product = horizontalProd; }
-            if (diagonalProd > product) { product = diagonalProd; }
             if (verticalProd > product) { product = verticalProd; }
         }
-
-        if (i >= 3 && j < matrix[i].length - 4) {
-            var diagonalProdDown = matrix[i][j] * matrix[i - 1][j - 1] * matrix[i - 2][j - 2] * matrix[i - 3][j - 3];
-            if (diagonalProdDown > product) { product = diagonalProdDown; }
+        if (j < matrix[i].length - 4) {
+            var horizontalProd = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+            if (horizontalProd > product) { product = horizontalProd; }
         }
-
+        if (i < matrix.length - 4 && j < matrix[i].length - 4) {
+            var diagonalDownProd = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+            if (diagonalDownProd > product) { product = diagonalDownProd; }
+        }
+        if (i >= 3 && j < matrix[i].length - 4) {
+            var diagonalUpProd = matrix[i][j] * matrix[i - 1][j + 1] * matrix[i - 2][j + 2] * matrix[i - 3][j + 3];
+            if (diagonalUpProd > product) { product = diagonalUpProd; }
+        }
         if (product > result) { result = product; }
     }
 }
